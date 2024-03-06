@@ -159,7 +159,7 @@
             this.labSunrise.BackColor = System.Drawing.Color.Transparent;
             this.labSunrise.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labSunrise.ForeColor = System.Drawing.Color.White;
-            this.labSunrise.Location = new System.Drawing.Point(297, 310);
+            this.labSunrise.Location = new System.Drawing.Point(297, 330);
             this.labSunrise.Name = "labSunrise";
             this.labSunrise.Size = new System.Drawing.Size(39, 23);
             this.labSunrise.TabIndex = 12;
@@ -171,7 +171,7 @@
             this.labSunset.BackColor = System.Drawing.Color.Transparent;
             this.labSunset.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labSunset.ForeColor = System.Drawing.Color.White;
-            this.labSunset.Location = new System.Drawing.Point(297, 360);
+            this.labSunset.Location = new System.Drawing.Point(297, 380);
             this.labSunset.Name = "labSunset";
             this.labSunset.Size = new System.Drawing.Size(39, 23);
             this.labSunset.TabIndex = 13;
@@ -249,7 +249,7 @@
             this.labHumidity.TabIndex = 19;
             this.labHumidity.Text = "N/A";
             // 
-            // Form1
+            // WeatherForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -273,7 +273,7 @@
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.City);
-            this.Name = "Form1";
+            this.Name = "WeatherForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.ResumeLayout(false);
