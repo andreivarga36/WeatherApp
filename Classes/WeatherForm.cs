@@ -95,7 +95,7 @@ namespace WeatherApp
 
         private string GetPicIconImage() => "http://openweathermap.org/img/w/" + weatherInfo.Weather[0].Icon + ".png";
 
-        private DateTime ConvertDateTime(long milisec)
+        private static DateTime ConvertDateTime(long milisec)
         {
             DateTime day = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             day = day.AddSeconds(milisec).ToLocalTime();
