@@ -5,7 +5,7 @@ namespace WeatherApp
     internal class Main
     {
         [JsonProperty("temp")]
-        internal double Temp {  get; set; }
+        internal double Temp { get; set; }
 
         [JsonProperty("pressure")]
         internal double Pressure { get; set; }

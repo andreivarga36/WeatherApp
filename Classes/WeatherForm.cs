@@ -1,9 +1,9 @@
-﻿using System.Net.Http;
-using System.Windows.Forms;
-using System.IO;
+﻿using Newtonsoft.Json;
 using System;
-using Newtonsoft.Json;
+using System.IO;
+using System.Net.Http;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace WeatherApp
 {
@@ -24,7 +24,7 @@ namespace WeatherApp
 
         private async void SearchButtonClick(object sender, EventArgs e)
         {
-              await GetWeater();
+            await GetWeater();
         }
 
         private async Task GetWeater()
