@@ -1,13 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace WeatherApp
 {
     internal class WeatherInfo
     {
-        internal Coord coord;
-        internal List<Weather> weather;
-        internal Main main;
-        internal Wind wind;
-        internal Sys sys;
+        [JsonProperty("coord")]
+        internal Coord Coord;
+
+        [JsonProperty("weather")]
+        internal List<Weather> Weather;
+
+        [JsonProperty("main")]
+        internal Main Main;
+
+        [JsonProperty("wind")]
+        internal Wind Wind;
+
+        [JsonProperty("sys")]
+        internal Sys Sys;
     }
 }

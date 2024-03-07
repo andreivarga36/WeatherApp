@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WeatherForm));
             this.City = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.labCountry = new System.Windows.Forms.Label();
             this.labDegrees = new System.Windows.Forms.Label();
@@ -46,6 +46,8 @@
             this.labPressure = new System.Windows.Forms.Label();
             this.humidity = new System.Windows.Forms.Label();
             this.labHumidity = new System.Windows.Forms.Label();
+            this.picIcon = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // City
@@ -60,13 +62,13 @@
             this.City.TabIndex = 2;
             this.City.Text = "City";
             // 
-            // textBox1
+            // textBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(276, 57);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(215, 31);
-            this.textBox1.TabIndex = 4;
+            this.textBox.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox.Location = new System.Drawing.Point(276, 57);
+            this.textBox.Name = "textBox";
+            this.textBox.Size = new System.Drawing.Size(215, 31);
+            this.textBox.TabIndex = 4;
             // 
             // btnSearch
             // 
@@ -80,6 +82,7 @@
             this.btnSearch.TabIndex = 5;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.SearchButtonClick);
             // 
             // labCountry
             // 
@@ -159,7 +162,7 @@
             this.labSunrise.BackColor = System.Drawing.Color.Transparent;
             this.labSunrise.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labSunrise.ForeColor = System.Drawing.Color.White;
-            this.labSunrise.Location = new System.Drawing.Point(297, 330);
+            this.labSunrise.Location = new System.Drawing.Point(272, 330);
             this.labSunrise.Name = "labSunrise";
             this.labSunrise.Size = new System.Drawing.Size(39, 23);
             this.labSunrise.TabIndex = 12;
@@ -171,7 +174,7 @@
             this.labSunset.BackColor = System.Drawing.Color.Transparent;
             this.labSunset.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labSunset.ForeColor = System.Drawing.Color.White;
-            this.labSunset.Location = new System.Drawing.Point(297, 380);
+            this.labSunset.Location = new System.Drawing.Point(272, 380);
             this.labSunset.Name = "labSunset";
             this.labSunset.Size = new System.Drawing.Size(39, 23);
             this.labSunset.TabIndex = 13;
@@ -207,7 +210,7 @@
             this.labWindSpeed.BackColor = System.Drawing.Color.Transparent;
             this.labWindSpeed.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labWindSpeed.ForeColor = System.Drawing.Color.White;
-            this.labWindSpeed.Location = new System.Drawing.Point(600, 130);
+            this.labWindSpeed.Location = new System.Drawing.Point(584, 130);
             this.labWindSpeed.Name = "labWindSpeed";
             this.labWindSpeed.Size = new System.Drawing.Size(39, 23);
             this.labWindSpeed.TabIndex = 16;
@@ -219,7 +222,7 @@
             this.labPressure.BackColor = System.Drawing.Color.Transparent;
             this.labPressure.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labPressure.ForeColor = System.Drawing.Color.White;
-            this.labPressure.Location = new System.Drawing.Point(600, 180);
+            this.labPressure.Location = new System.Drawing.Point(584, 180);
             this.labPressure.Name = "labPressure";
             this.labPressure.Size = new System.Drawing.Size(39, 23);
             this.labPressure.TabIndex = 17;
@@ -243,11 +246,21 @@
             this.labHumidity.BackColor = System.Drawing.Color.Transparent;
             this.labHumidity.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labHumidity.ForeColor = System.Drawing.Color.White;
-            this.labHumidity.Location = new System.Drawing.Point(600, 230);
+            this.labHumidity.Location = new System.Drawing.Point(584, 230);
             this.labHumidity.Name = "labHumidity";
             this.labHumidity.Size = new System.Drawing.Size(39, 23);
             this.labHumidity.TabIndex = 19;
             this.labHumidity.Text = "N/A";
+            // 
+            // picIcon
+            // 
+            this.picIcon.BackColor = System.Drawing.Color.Transparent;
+            this.picIcon.Location = new System.Drawing.Point(342, 230);
+            this.picIcon.Name = "picIcon";
+            this.picIcon.Size = new System.Drawing.Size(100, 73);
+            this.picIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picIcon.TabIndex = 20;
+            this.picIcon.TabStop = false;
             // 
             // WeatherForm
             // 
@@ -256,6 +269,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(743, 436);
+            this.Controls.Add(this.picIcon);
             this.Controls.Add(this.labHumidity);
             this.Controls.Add(this.humidity);
             this.Controls.Add(this.labPressure);
@@ -271,11 +285,12 @@
             this.Controls.Add(this.labDegrees);
             this.Controls.Add(this.labCountry);
             this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox);
             this.Controls.Add(this.City);
             this.Name = "WeatherForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.picIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,9 +299,8 @@
         #endregion
 
         private System.Windows.Forms.Label City;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Label labCountry;
         private System.Windows.Forms.Label labDegrees;
         private System.Windows.Forms.Label labConditions;
         private System.Windows.Forms.Label labDetails;
@@ -300,6 +314,8 @@
         private System.Windows.Forms.Label labPressure;
         private System.Windows.Forms.Label humidity;
         private System.Windows.Forms.Label labHumidity;
+        private System.Windows.Forms.PictureBox picIcon;
+        private System.Windows.Forms.Label labCountry;
     }
 }
 
