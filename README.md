@@ -4,10 +4,6 @@
 
 ## Usage Instructions
 
-  - Download and Installation: To use the application, download and install the WeatherApp.exe located in SetupInstaller folder
-
-  - Launch Application: After installation, run the WeatherApp.exe file located in the bin directory's Debug folder
-      
   - Enter Location: In the text field, enter the name of the city or location for which you want to retrieve weather information and press Search
     
   - View Weather Information: Temperature, weather conditions, wind, humidity, etc., will be displayed in the graphical interface
@@ -29,7 +25,7 @@
 #### Screenshots
 
   - ![City found - Madrid](ScreenShots/madrid.jpg)
-  - ![City found - Bucharest](ScreenShots/bucharest.jpg)
+  - ![City found - Bucharest](ScreenShots/london.jpg)
   - ![Empty field](ScreenShots/empty.jpg)
   - ![City not found](ScreenShots/notFound.jpg)
 
