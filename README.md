@@ -29,7 +29,7 @@
 #### Screenshots
 
   - ![City found - Madrid](ScreenShots/madrid.jpg)
-  - ![City found - Bucharest](ScreenShots/bucharest.jpg)
+  - ![City found - Bucharest](ScreenShots/london.jpg)
   - ![Empty field](ScreenShots/empty.jpg)
   - ![City not found](ScreenShots/notFound.jpg)
 
