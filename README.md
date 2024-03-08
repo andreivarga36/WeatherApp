@@ -11,14 +11,18 @@
 ### Technologies and Tools Used
 
     - C#: The programming language used for developing the application
-    
+
     - .NET Framework: The development platform for creating desktop applications
-    
-    - Windows Forms: The GUI library used for building the user interface
-    
+
     - Newtonsoft.Json: The library used for serializing and deserializing JSON data
-    
+
+    - System.IO: The namespace used for input and output operations
+
     - HttpClient: The .NET class used for making HTTP requests to the OpenWeatherMap API
+
+    - Windows Forms: The GUI library used for building the user interface
+
+    - System.Threading.Tasks: The namespace used for working with asynchronous tasks   
     
     - Code Analyzers: Microsoft.CodeAnalysis.NetAnalyzers, Roslynator.Analyzers, SonarAnalyzer.CSharp
 
