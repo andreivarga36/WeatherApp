@@ -19,5 +19,8 @@ namespace WeatherApp
 
         [JsonProperty("sys")]
         internal Sys Sys;
+
+        [JsonProperty("name")]
+        internal string City;
     }
 }

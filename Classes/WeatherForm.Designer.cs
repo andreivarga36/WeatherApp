@@ -32,7 +32,7 @@
             this.City = new System.Windows.Forms.Label();
             this.textBox = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.labCountry = new System.Windows.Forms.Label();
+            this.labCityInfo = new System.Windows.Forms.Label();
             this.labDegrees = new System.Windows.Forms.Label();
             this.labConditions = new System.Windows.Forms.Label();
             this.labDetails = new System.Windows.Forms.Label();
@@ -84,17 +84,17 @@
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.SearchButtonClick);
             // 
-            // labCountry
+            // labCityInfo
             // 
-            this.labCountry.AutoSize = true;
-            this.labCountry.BackColor = System.Drawing.Color.Transparent;
-            this.labCountry.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labCountry.ForeColor = System.Drawing.Color.White;
-            this.labCountry.Location = new System.Drawing.Point(185, 130);
-            this.labCountry.Name = "labCountry";
-            this.labCountry.Size = new System.Drawing.Size(77, 23);
-            this.labCountry.TabIndex = 6;
-            this.labCountry.Text = "Country:";
+            this.labCityInfo.AutoSize = true;
+            this.labCityInfo.BackColor = System.Drawing.Color.Transparent;
+            this.labCityInfo.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labCityInfo.ForeColor = System.Drawing.Color.White;
+            this.labCityInfo.Location = new System.Drawing.Point(185, 130);
+            this.labCityInfo.Name = "labCityInfo";
+            this.labCityInfo.Size = new System.Drawing.Size(71, 23);
+            this.labCityInfo.TabIndex = 6;
+            this.labCityInfo.Text = "CityInfo";
             // 
             // labDegrees
             // 
@@ -283,7 +283,7 @@
             this.Controls.Add(this.labDetails);
             this.Controls.Add(this.labConditions);
             this.Controls.Add(this.labDegrees);
-            this.Controls.Add(this.labCountry);
+            this.Controls.Add(this.labCityInfo);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.textBox);
             this.Controls.Add(this.City);
@@ -315,7 +315,7 @@
         private System.Windows.Forms.Label humidity;
         private System.Windows.Forms.Label labHumidity;
         private System.Windows.Forms.PictureBox picIcon;
-        private System.Windows.Forms.Label labCountry;
+        private System.Windows.Forms.Label labCityInfo;
     }
 }
 

@@ -10,8 +10,9 @@ namespace WeatherApp
     public partial class WeatherForm : Form
     {
         private readonly HttpClient httpClient;
-        private readonly string message;
         private readonly string apiKey;
+        private readonly string message;
+        private readonly string picURL;
         private WeatherInfo weatherInfo;
 
         public WeatherForm()
@@ -20,6 +21,7 @@ namespace WeatherApp
             httpClient = new HttpClient();
             apiKey = File.ReadAllText("api.txt");
             message = "City was not found, please make sure the name is correct!";
+            picURL = "http://openweathermap.org/img/w/";
         }
 
         private async void SearchButtonClick(object sender, EventArgs e)
@@ -31,7 +33,7 @@ namespace WeatherApp
         {
             try
             {
-                HttpResponseMessage response = await httpClient.GetAsync($"https://api.openweathermap.org/data/2.5/weather?q={textBox.Text}&appid={apiKey}");
+                HttpResponseMessage response = await httpClient.GetAsync($"https://api.openweathermap.org/data/2.5/weather?q={textBox.Text}&appid={apiKey}&units=metric");
                 await HandleWeatherResponse(response);
             }
             catch (Exception ex)
@@ -60,23 +62,31 @@ namespace WeatherApp
             DisplayLocationInfo();
             DisplayTemperatureInfo();
             DisplayWeatherConditionInfo();
+            DisplaySunriseAndSunsetInfo();
             DisplayWindInfo();
-            DisplayAdditionalWeatherInfo();
+            DisplayPressureAndHumidityInfo();
+            DisplayPicIcon();
         }
 
-        private void DisplayLocationInfo() => labCountry.Text = $"Country:  {weatherInfo.Sys.Country}";
+        private void DisplayLocationInfo() => labCityInfo.Text = $"{weatherInfo.City}, {weatherInfo.Sys.Country}";
 
-        private void DisplayTemperatureInfo()
-        {
-            double temperatureInCelsius = weatherInfo.Main.Temp - 273.15f;
-            labDegrees.Text = $"{temperatureInCelsius:0.0} °C";
-        }
+        private void DisplayTemperatureInfo() => labDegrees.Text = $"{weatherInfo.Main.Temp:0.0°} C";
 
         private void DisplayWeatherConditionInfo()
         {
             labConditions.Text = weatherInfo.Weather[0].Main;
             labDetails.Text = weatherInfo.Weather[0].Description;
-            picIcon.ImageLocation = GetPicIconImage();
+        }
+
+        private void DisplayPicIcon() => picIcon.ImageLocation = $"{picURL}{weatherInfo.Weather[0].Icon}.png";
+
+        private void DisplaySunriseAndSunsetInfo()
+        {
+            DateTimeOffset sunriseTime = DateTimeOffset.FromUnixTimeSeconds(weatherInfo.Sys.Sunrise);
+            DateTimeOffset sunsetTime = DateTimeOffset.FromUnixTimeSeconds(weatherInfo.Sys.Sunset);
+
+            labSunrise.Text = $"{sunriseTime: HH : mm}";
+            labSunset.Text = $"{sunsetTime: HH : mm}";
         }
 
         private void DisplayWindInfo()
@@ -85,22 +95,10 @@ namespace WeatherApp
             labWindSpeed.Text = $"{windSpeedInKmPerHour:0.0} km/h";
         }
 
-        private void DisplayAdditionalWeatherInfo()
+        private void DisplayPressureAndHumidityInfo()
         {
-            labPressure.Text = weatherInfo.Main.Pressure.ToString();
+            labPressure.Text = $"{weatherInfo.Main.Pressure}";
             labHumidity.Text = $"{weatherInfo.Main.Humidity}%";
-            labSunrise.Text = ConvertDateTime(weatherInfo.Sys.Sunrise).ToShortTimeString();
-            labSunset.Text = ConvertDateTime(weatherInfo.Sys.Sunset).ToShortTimeString();
-        }
-
-        private string GetPicIconImage() => "http://openweathermap.org/img/w/" + weatherInfo.Weather[0].Icon + ".png";
-
-        private static DateTime ConvertDateTime(long milisec)
-        {
-            DateTime day = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-            day = day.AddSeconds(milisec).ToLocalTime();
-
-            return day;
         }
     }
 }
