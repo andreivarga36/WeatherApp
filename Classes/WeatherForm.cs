@@ -11,7 +11,7 @@ namespace WeatherApp
     {
         private readonly HttpClient httpClient;
         private readonly string apiKey;
-        private readonly string message;
+        private readonly string errorMessage;
         private readonly string picURL;
         private WeatherInfo weatherInfo;
 
@@ -20,7 +20,7 @@ namespace WeatherApp
             InitializeComponent();
             httpClient = new HttpClient();
             apiKey = File.ReadAllText("api.txt");
-            message = "City was not found, please make sure the name is correct!";
+            errorMessage = "City was not found, please make sure the name is correct!";
             picURL = "http://openweathermap.org/img/w/";
         }
 
@@ -53,7 +53,7 @@ namespace WeatherApp
             }
             else
             {
-                MessageBox.Show(message);
+                MessageBox.Show(errorMessage);
             }
         }
 
