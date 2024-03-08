@@ -26,10 +26,10 @@ namespace WeatherApp
 
         private async void SearchButtonClick(object sender, EventArgs e)
         {
-            await GetWeater();
+            await GetWeather();
         }
 
-        private async Task GetWeater()
+        private async Task GetWeather()
         {
             try
             {
