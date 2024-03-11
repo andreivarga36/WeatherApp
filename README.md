@@ -5,6 +5,10 @@
 ## Usage Instructions
 
   - Enter Location: In the text field, enter the name of the city or location for which you want to retrieve weather information and press Search
+
+  - Please enter the name of the city in English, following the naming convention used by OpenWeatherMap. For example, for the capital of Romania, please enter "Bucharest" instead of "Bucuresti".
+
+  - If you wish to find a city and it's important to specify the country it belongs to, you can add the country name or country code after the desired city. For example, enter "Paris, France" or 'Paris, FR'. This ensures you receive accurate weather information for the desired city
     
   - View Weather Information: Temperature, weather conditions, wind, humidity, etc., will be displayed in the graphical interface
 
