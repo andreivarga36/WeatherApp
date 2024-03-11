@@ -10,7 +10,7 @@
 
   - As multiple countries may have cities with the same name, it's important to specify the country when searching for a city with a common name to ensure accurate weather information. For example, enter "Sydney, Australia" or "Sydney, Canada". It works with country code (ISO 3166-1) too, "Sydeny, Au" or "Sydney, Ca"
     
-  - View Weather Information: Temperature, weather conditions, wind, humidity, etc., will be displayed in the graphical interface
+  - View Weather Information: Temperature, weather conditions, wind, humidity, etc; will be displayed in the graphical interface
 
 ### Technologies and Tools Used
 
