@@ -22,7 +22,7 @@ namespace WeatherApp
             apiKey = File.ReadAllText("api.txt");
             errorMessage = "City was not found, please make sure the name is correct!";
             picURL = "http://openweathermap.org/img/w/";
-            textBox.KeyPress += TextBoxKeyPress; 
+            textBox.KeyPress += TextBoxKeyPress;
         }
 
         private async void SearchButtonClick(object sender, EventArgs e)
@@ -73,13 +73,15 @@ namespace WeatherApp
 
         private void DisplayTemperatureInfo() => labDegrees.Text = $"{weatherInfo.Main.Temp:0.0°} C";
 
+        private void DisplayPicIcon() => picIcon.ImageLocation = $"{picURL}{weatherInfo.Weather[0].Icon}.png";
+
+        private static DateTimeOffset ConvertUnixTimeStampToLocalTime(long unixTimestamp) => DateTimeOffset.FromUnixTimeSeconds(unixTimestamp);
+
         private void DisplayWeatherConditionInfo()
         {
             labConditions.Text = weatherInfo.Weather[0].Main;
             labDetails.Text = weatherInfo.Weather[0].Description;
         }
-
-        private void DisplayPicIcon() => picIcon.ImageLocation = $"{picURL}{weatherInfo.Weather[0].Icon}.png";
 
         private void DisplaySunriseAndSunsetInfo()
         {
@@ -101,8 +103,6 @@ namespace WeatherApp
             labPressure.Text = $"{weatherInfo.Main.Pressure}";
             labHumidity.Text = $"{weatherInfo.Main.Humidity}%";
         }
-
-        private static DateTimeOffset ConvertUnixTimeStampToLocalTime(long unixTimestamp) => DateTimeOffset.FromUnixTimeSeconds(unixTimestamp);
 
         private async void TextBoxKeyPress(object sender, KeyPressEventArgs e)
         {
