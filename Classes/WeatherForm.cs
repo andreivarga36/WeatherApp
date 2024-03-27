@@ -27,15 +27,15 @@ namespace WeatherApp
 
         private async void SearchButtonClick(object sender, EventArgs e)
         {
-            await GetWeather();
+            await RetrieveWeatherInformation();
         }
 
-        private async Task GetWeather()
+        private async Task RetrieveWeatherInformation()
         {
             try
             {
-                HttpResponseMessage response = await httpClient.GetAsync($"https://api.openweathermap.org/data/2.5/weather?q={textBox.Text}&appid={apiKey}&units=metric");
-                await HandleWeatherResponse(response);
+                using (HttpResponseMessage response = await httpClient.GetAsync($"https://api.openweathermap.org/data/2.5/weather?q={textBox.Text}&appid={apiKey}&units=metric"))
+                await HandleResponse(response);
             }
             catch (Exception ex)
             {
@@ -43,7 +43,7 @@ namespace WeatherApp
             }
         }
 
-        private async Task HandleWeatherResponse(HttpResponseMessage response)
+        private async Task HandleResponse(HttpResponseMessage response)
         {
             if (response.IsSuccessStatusCode)
             {
@@ -109,7 +109,7 @@ namespace WeatherApp
             if (e.KeyChar == (char)Keys.Enter)
             {
                 e.Handled = true;
-                await GetWeather();
+                await RetrieveWeatherInformation();
             }
         }
     }
