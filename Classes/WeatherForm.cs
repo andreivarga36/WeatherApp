@@ -1,64 +1,50 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.IO;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WeatherApp.Classes;
 
 namespace WeatherApp
 {
     public partial class WeatherForm : Form
     {
-        private readonly HttpClient httpClient;
+        private readonly ApiService apiService;
+        private readonly ApiHandler apiServiceHandler;
         private readonly string apiKey;
-        private readonly string errorMessage;
-        private readonly string picURL;
         private WeatherInfo weatherInfo;
 
         public WeatherForm()
         {
             InitializeComponent();
-            httpClient = new HttpClient();
             apiKey = File.ReadAllText("api.txt");
-            errorMessage = "City was not found, please make sure the name is correct!";
-            picURL = "http://openweathermap.org/img/w/";
-            textBox.KeyPress += TextBoxKeyPress;
+            apiService = new ApiService();
+            apiServiceHandler = new ApiHandler();
+            FormClosing += ReleaseResources;
+        }
+
+        private void ReleaseResources(object sender, FormClosingEventArgs e)
+        {
+            apiService.ReleaseResources();
+            Dispose();
         }
 
         private async void SearchButtonClick(object sender, EventArgs e)
         {
-            await RetrieveWeatherInformation();
+            await DisplayWeather();
         }
 
-        private async Task RetrieveWeatherInformation()
+        private async Task DisplayWeather()
         {
-            try
-            {
-                using (HttpResponseMessage response = await httpClient.GetAsync($"https://api.openweathermap.org/data/2.5/weather?q={textBox.Text}&appid={apiKey}&units=metric"))
-                await HandleResponse(response);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            string city = textBox.Text;
+
+            string responseContent = await apiService.RetrieveWeatherInformationAsync(city, apiKey);
+            weatherInfo = apiServiceHandler.DeserializeObject(responseContent);
+
+            DisplayOverviewWeatherInfo();
         }
 
-        private async Task HandleResponse(HttpResponseMessage response)
-        {
-            if (response.IsSuccessStatusCode)
-            {
-                string json = await response.Content.ReadAsStringAsync();
-                weatherInfo = JsonConvert.DeserializeObject<WeatherInfo>(json);
 
-                DisplayWeatherInfo();
-            }
-            else
-            {
-                MessageBox.Show(errorMessage);
-            }
-        }
-
-        private void DisplayWeatherInfo()
+        private void DisplayOverviewWeatherInfo()
         {
             DisplayLocationInfo();
             DisplayTemperatureInfo();
@@ -73,7 +59,7 @@ namespace WeatherApp
 
         private void DisplayTemperatureInfo() => labDegrees.Text = $"{weatherInfo.Main.Temp:0.0°} C";
 
-        private void DisplayPicIcon() => picIcon.ImageLocation = $"{picURL}{weatherInfo.Weather[0].Icon}.png";
+        private void DisplayPicIcon() => picIcon.ImageLocation = $"http://openweathermap.org/img/w/{weatherInfo.Weather[0].Icon}.png";
 
         private static DateTimeOffset ConvertUnixTimeStampToLocalTime(long unixTimestamp) => DateTimeOffset.FromUnixTimeSeconds(unixTimestamp);
 
@@ -109,7 +95,7 @@ namespace WeatherApp
             if (e.KeyChar == (char)Keys.Enter)
             {
                 e.Handled = true;
-                await RetrieveWeatherInformation();
+                await DisplayWeather();
             }
         }
     }
