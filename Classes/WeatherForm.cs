@@ -17,15 +17,12 @@ namespace WeatherApp
         {
             InitializeComponent();
             apiKey = File.ReadAllText("api.txt");
+
             apiService = new ApiService();
             apiServiceHandler = new ApiHandler();
-            FormClosing += ReleaseResources;
-        }
 
-        private void ReleaseResources(object sender, FormClosingEventArgs e)
-        {
-            apiService.ReleaseResources();
-            Dispose();
+            textBox.KeyPress += TextBoxKeyPress;
+            FormClosing += ReleaseResources;
         }
 
         private async void SearchButtonClick(object sender, EventArgs e)
@@ -88,6 +85,12 @@ namespace WeatherApp
         {
             labPressure.Text = $"{weatherInfo.Main.Pressure}";
             labHumidity.Text = $"{weatherInfo.Main.Humidity}%";
+        }
+
+        private void ReleaseResources(object sender, FormClosingEventArgs e)
+        {
+            apiService.ReleaseResources();
+            Dispose();
         }
 
         private async void TextBoxKeyPress(object sender, KeyPressEventArgs e)
