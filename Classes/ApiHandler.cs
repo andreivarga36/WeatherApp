@@ -1,13 +1,21 @@
 ﻿using Newtonsoft.Json;
+using System;
 using WeatherApp.Interfaces;
 
 namespace WeatherApp.Classes
 {
-    internal class ApiHandler : IApiHandler
+    public class ApiHandler : IApiHandler
     {
         public WeatherInfo DeserializeObject(string responseContent)
         {
-            return JsonConvert.DeserializeObject<WeatherInfo>(responseContent);
+            try
+            {
+                return JsonConvert.DeserializeObject<WeatherInfo>(responseContent);
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException(ex.Message);
+            }
         }
     }
 }

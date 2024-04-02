@@ -1,4 +1,6 @@
-﻿namespace WeatherApp.Interfaces
+﻿using WeatherApp.Classes;
+
+namespace WeatherApp.Interfaces
 {
     internal interface IApiHandler
     {

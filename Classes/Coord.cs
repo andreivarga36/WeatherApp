@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace WeatherApp
+namespace WeatherApp.Classes
 {
     internal class Coord
     {

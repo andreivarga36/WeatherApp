@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace WeatherApp
+namespace WeatherApp.Classes
 {
     internal static class Program
     {

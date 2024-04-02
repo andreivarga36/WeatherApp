@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace WeatherApp
+namespace WeatherApp.Classes
 {
-    internal class WeatherInfo
+    public class WeatherInfo
     {
         [JsonProperty("coord")]
         internal Coord Coord;
