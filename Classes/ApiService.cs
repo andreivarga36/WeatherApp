@@ -7,13 +7,7 @@ namespace WeatherApp.Classes
 {
     public class ApiService : IApiService
     {
-        private readonly HttpClient httpClient;
-
-        public ApiService()
-        {
-            httpClient = new HttpClient();
-
-        }
+        private readonly HttpClient httpClient = new HttpClient();
 
         public async Task<string> RetrieveWeatherInformationAsync(string city, string apiKey)
         {

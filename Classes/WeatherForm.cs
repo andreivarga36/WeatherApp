@@ -37,16 +37,17 @@ namespace WeatherApp
 
             try
             {
-                if (!ValidateCity(city))
+                if (ValidateCity(city))
                 {
-                    MessageBox.Show("Please enter a valid city/country name");
-                    return;
+                    string responseContent = await apiService.RetrieveWeatherInformationAsync(city, apiKey);
+                    weatherInfo = apiServiceHandler.DeserializeObject(responseContent);
+
+                    DisplayOverviewWeatherInfo();
                 }
-
-                string responseContent = await apiService.RetrieveWeatherInformationAsync(city, apiKey);
-                weatherInfo = apiServiceHandler.DeserializeObject(responseContent);
-
-                DisplayOverviewWeatherInfo();
+                else
+                {
+                    MessageBox.Show("Please enter a valid city/country name!");
+                }
             }
             catch(Exception ex)
             {
