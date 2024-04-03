@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
 using WeatherApp.Interfaces;
 
 namespace WeatherApp.Classes
@@ -8,14 +7,12 @@ namespace WeatherApp.Classes
     {
         public WeatherInfo DeserializeObject(string responseContent)
         {
-            try
+            if (string.IsNullOrEmpty(responseContent))
             {
-                return JsonConvert.DeserializeObject<WeatherInfo>(responseContent);
+                return null;
             }
-            catch (Exception ex)
-            {
-                throw new InvalidOperationException(ex.Message);
-            }
+
+            return JsonConvert.DeserializeObject<WeatherInfo>(responseContent);
         }
     }
 }

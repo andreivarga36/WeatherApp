@@ -1,8 +1,9 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WeatherApp.Classes;
+using WeatherApp.Classes;  
 
 namespace WeatherApp
 {
@@ -34,10 +35,23 @@ namespace WeatherApp
         {
             string city = textBox.Text;
 
-            string responseContent = await apiService.RetrieveWeatherInformationAsync(city, apiKey);
-            weatherInfo = apiServiceHandler.DeserializeObject(responseContent);
+            try
+            {
+                if (!ValidateCity(city))
+                {
+                    MessageBox.Show("Please enter a valid city/country name");
+                    return;
+                }
 
-            DisplayOverviewWeatherInfo();
+                string responseContent = await apiService.RetrieveWeatherInformationAsync(city, apiKey);
+                weatherInfo = apiServiceHandler.DeserializeObject(responseContent);
+
+                DisplayOverviewWeatherInfo();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
 
@@ -100,6 +114,16 @@ namespace WeatherApp
                 e.Handled = true;
                 await DisplayWeather();
             }
+        }
+
+        private static bool ValidateCity(string city)
+        {
+            if (string.IsNullOrEmpty(city))
+            {
+                return false;
+            }
+
+            return city.All(char.IsLetter);
         }
     }
 }
