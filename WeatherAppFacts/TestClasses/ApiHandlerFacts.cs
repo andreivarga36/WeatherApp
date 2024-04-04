@@ -1,4 +1,5 @@
-﻿using WeatherApp.Classes;
+﻿using Newtonsoft.Json;
+using WeatherApp.Classes;
 
 namespace WeatherAppFacts.TestClasses
 {
@@ -12,7 +13,8 @@ namespace WeatherAppFacts.TestClasses
 
             WeatherInfo weatherInfo = apiHandler.DeserializeObject(responseContent);
 
-            Assert.NotNull(weatherInfo);
+            Assert.Equal(10.99, weatherInfo.Coord.Lon);
+            Assert.Equal(44.34, weatherInfo.Coord.Lat);
         }
 
         [Fact]
@@ -21,7 +23,7 @@ namespace WeatherAppFacts.TestClasses
             string responseContent = "{ \"coord\": {\r\n    \"lon\": 10.99,\r\n    \"lat\": 44.34\r\n}";
             ApiHandler apiHandler = new ();
 
-            Assert.Throws<InvalidOperationException>(() => apiHandler.DeserializeObject(responseContent));
+            Assert.Throws<JsonSerializationException>(() => apiHandler.DeserializeObject(responseContent));
         }
 
 
@@ -43,7 +45,9 @@ namespace WeatherAppFacts.TestClasses
             string? responseContent = null;
             ApiHandler apiHandler = new ();
 
-            Assert.Throws<InvalidOperationException>(() => apiHandler.DeserializeObject(responseContent));
+            WeatherInfo weatherInfo = apiHandler.DeserializeObject(responseContent);
+
+            Assert.Null(weatherInfo);
         }
     }
 }

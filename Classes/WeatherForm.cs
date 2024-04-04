@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WeatherApp.Classes;  
@@ -10,7 +9,7 @@ namespace WeatherApp
     public partial class WeatherForm : Form
     {
         private readonly ApiService apiService;
-        private readonly ApiHandler apiServiceHandler;
+        private readonly ApiHandler apiHandler;
         private readonly string apiKey;
         private WeatherInfo weatherInfo;
 
@@ -20,7 +19,7 @@ namespace WeatherApp
             apiKey = File.ReadAllText("api.txt");
 
             apiService = new ApiService();
-            apiServiceHandler = new ApiHandler();
+            apiHandler = new ApiHandler();
 
             textBox.KeyPress += TextBoxKeyPress;
             FormClosing += ReleaseResources;
@@ -37,17 +36,18 @@ namespace WeatherApp
 
             try
             {
-                if (ValidateCity(city))
-                {
-                    string responseContent = await apiService.RetrieveWeatherInformationAsync(city, apiKey);
-                    weatherInfo = apiServiceHandler.DeserializeObject(responseContent);
+                string responseContent = await apiService.RetrieveWeatherInformationAsync(city, apiKey);
+                weatherInfo = apiHandler.DeserializeObject(responseContent);
 
+                if (ValidateCity())
+                {
                     DisplayOverviewWeatherInfo();
                 }
                 else
                 {
                     MessageBox.Show("Please enter a valid city/country name!");
                 }
+
             }
             catch(Exception ex)
             {
@@ -117,14 +117,11 @@ namespace WeatherApp
             }
         }
 
-        private static bool ValidateCity(string city)
+        private bool ValidateCity()
         {
-            if (string.IsNullOrEmpty(city))
-            {
-                return false;
-            }
+            string city = textBox.Text;
 
-            return city.All(char.IsLetter);
+            return weatherInfo.Message != "city not found" && !string.IsNullOrEmpty(city);
         }
     }
 }

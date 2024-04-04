@@ -2,15 +2,15 @@
 
 namespace WeatherApp.Classes
 {
-    internal class Sys
+    public class Sys
     {
         [JsonProperty("sunrise")]
-        internal long Sunrise { get; set; }
+        public long Sunrise { get; set; }
 
         [JsonProperty("sunset")]
-        internal long Sunset { get; set; }
+        public long Sunset { get; set; }
 
         [JsonProperty("country")]
-        internal string Country { get; set; }
+        public string Country { get; set; }
     }
 }

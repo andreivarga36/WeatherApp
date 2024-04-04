@@ -2,9 +2,9 @@
 
 namespace WeatherApp.Classes
 {
-    internal class Wind
+    public class Wind
     {
         [JsonProperty("speed")]
-        internal double Speed { get; set; }
+        public double Speed { get; set; }
     }
 }

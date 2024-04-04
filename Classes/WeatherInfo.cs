@@ -6,21 +6,23 @@ namespace WeatherApp.Classes
     public class WeatherInfo
     {
         [JsonProperty("coord")]
-        internal Coord Coord;
+        public Coord Coord { get; set; }
 
         [JsonProperty("weather")]
-        internal List<Weather> Weather;
+        public List<Weather> Weather { get; set; }
 
         [JsonProperty("main")]
-        internal Main Main;
+        public Main Main { get; set; }
 
         [JsonProperty("wind")]
-        internal Wind Wind;
+        public Wind Wind { get; set; }
 
         [JsonProperty("sys")]
-        internal Sys Sys;
+        public Sys Sys { get; set; }
 
         [JsonProperty("name")]
-        internal string City;
+        public string City { get; set; }
+        [JsonProperty("message")]
+        public string Message { get; set; }
     }
 }

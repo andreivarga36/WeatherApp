@@ -2,12 +2,12 @@
 
 namespace WeatherApp.Classes
 {
-    internal class Coord
+    public class Coord
     {
         [JsonProperty("lon")]
-        internal double Lon { get; set; }
+        public double Lon { get; set; }
 
         [JsonProperty("lat")]
-        internal double Lat { get; set; }
+        public double Lat { get; set; }
     }
 }
