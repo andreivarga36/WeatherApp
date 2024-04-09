@@ -8,8 +8,8 @@ namespace WeatherApp
 {
     public partial class WeatherForm : Form
     {
-        private readonly ApiService apiService;
-        private readonly ApiHandler apiHandler;
+        private readonly ApiService apiService = new ApiService ();
+        private readonly ApiHandler apiHandler = new ApiHandler();
         private readonly string apiKey;
         private WeatherInfo weatherInfo;
 
@@ -18,11 +18,8 @@ namespace WeatherApp
             InitializeComponent();
             apiKey = File.ReadAllText("api.txt");
 
-            apiService = new ApiService();
-            apiHandler = new ApiHandler();
-
             textBox.KeyPress += TextBoxKeyPress;
-            FormClosing += ReleaseResources;
+            FormClosing += WeatherFormFormClosing;
         }
 
         private async void SearchButtonClick(object sender, EventArgs e)
@@ -102,11 +99,6 @@ namespace WeatherApp
             labHumidity.Text = $"{weatherInfo.Main.Humidity}%";
         }
 
-        private void ReleaseResources(object sender, FormClosingEventArgs e)
-        {
-            apiService.ReleaseResources();
-            Dispose();
-        }
 
         private async void TextBoxKeyPress(object sender, KeyPressEventArgs e)
         {
@@ -122,6 +114,11 @@ namespace WeatherApp
             string city = textBox.Text;
 
             return weatherInfo.Message != "city not found" && !string.IsNullOrEmpty(city);
+        }
+
+        private void WeatherFormFormClosing(object sender, FormClosingEventArgs e)
+        {
+            apiService.DisposeClient();
         }
     }
 }

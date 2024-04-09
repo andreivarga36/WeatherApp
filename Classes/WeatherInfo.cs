@@ -22,6 +22,7 @@ namespace WeatherApp.Classes
 
         [JsonProperty("name")]
         public string City { get; set; }
+
         [JsonProperty("message")]
         public string Message { get; set; }
     }

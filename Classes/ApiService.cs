@@ -7,18 +7,28 @@ namespace WeatherApp.Classes
 {
     public class ApiService : IApiService
     {
-        private readonly HttpClient httpClient = new HttpClient();
+        private readonly HttpClient httpClient;
+
+        public ApiService()
+        {
+            httpClient = new HttpClient();
+        }
+
+        public ApiService(HttpClient client)
+        {
+            httpClient = client;
+        }
+
+        public void DisposeClient()
+        {
+            httpClient.Dispose();
+        }
 
         public async Task<string> RetrieveWeatherInformationAsync(string city, string apiKey)
         {
             try
             {
-                var requestURL = $"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={apiKey}&units=metric";
-
-                using (HttpResponseMessage response = await httpClient.GetAsync(requestURL))
-                {
-                    return await response.Content.ReadAsStringAsync();
-                }
+                return await HandleWeatherApiResponse(city, apiKey);
             }
             catch (Exception ex)
             {
@@ -26,9 +36,20 @@ namespace WeatherApp.Classes
             }
         }
 
-        public void ReleaseResources()
+        private async Task<string> HandleWeatherApiResponse(string city, string apiKey)
         {
-            httpClient.Dispose();
+            var requestURL = $"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={apiKey}&units=metric";
+
+            using (HttpResponseMessage response = await httpClient.GetAsync(requestURL))
+            {
+                if (!response.IsSuccessStatusCode)
+                {
+                    string errorMessage = $"The API request failed for the city '{city}' with HTTP status code: {response.StatusCode}";
+                    throw new InvalidOperationException(errorMessage);
+                }
+
+                return await response.Content.ReadAsStringAsync();
+            }
         }
     }
 }
