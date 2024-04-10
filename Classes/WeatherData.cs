@@ -1,9 +1,10 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
+using WeatherApp.Interfaces;
 
 namespace WeatherApp.Classes
 {
-    public class WeatherInfo
+    public class WeatherData : IWeatherData
     {
         [JsonProperty("coord")]
         public Coord Coord { get; set; }

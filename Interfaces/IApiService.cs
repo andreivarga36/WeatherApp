@@ -1,9 +1,14 @@
 ﻿using System.Threading.Tasks;
+using WeatherApp.Classes;
 
 namespace WeatherApp.Interfaces
 {
-    internal interface IApiService
+    public interface IApiService
     {
         Task<string> RetrieveWeatherInformationAsync(string city, string apiKey);
+
+        WeatherData DeserializeObject(string responseContent);
+
+        void DisposeClient();
     }
 }

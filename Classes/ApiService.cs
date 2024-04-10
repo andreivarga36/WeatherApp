@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using WeatherApp.Interfaces;
@@ -17,6 +18,16 @@ namespace WeatherApp.Classes
         public ApiService(HttpClient client)
         {
             httpClient = client;
+        }
+
+        public WeatherData DeserializeObject(string responseContent)
+        {
+            if (string.IsNullOrEmpty(responseContent))
+            {
+                throw new ArgumentException("Response content cannot be null or empty", nameof(responseContent));
+            }
+
+            return JsonConvert.DeserializeObject<WeatherData>(responseContent);
         }
 
         public void DisposeClient()

@@ -1,22 +1,23 @@
 ﻿using System;
-using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WeatherApp.Classes;  
+using WeatherApp.Interfaces;
 
 namespace WeatherApp
 {
     public partial class WeatherForm : Form
     {
-        private readonly ApiService apiService = new ApiService ();
-        private readonly ApiHandler apiHandler = new ApiHandler();
+        private readonly IApiService apiService;
         private readonly string apiKey;
-        private WeatherInfo weatherInfo;
+        private IWeatherData weatherData;
 
-        public WeatherForm()
+        public WeatherForm(IApiService apiService, IWeatherData weatherData, string apiKey)
         {
             InitializeComponent();
-            apiKey = File.ReadAllText("api.txt");
+
+            this.apiService = apiService;
+            this.weatherData = weatherData; 
+            this.apiKey = apiKey;
 
             textBox.KeyPress += TextBoxKeyPress;
             FormClosing += WeatherFormFormClosing;
@@ -29,22 +30,9 @@ namespace WeatherApp
 
         private async Task DisplayWeather()
         {
-            string city = textBox.Text;
-
             try
             {
-                string responseContent = await apiService.RetrieveWeatherInformationAsync(city, apiKey);
-                weatherInfo = apiHandler.DeserializeObject(responseContent);
-
-                if (ValidateCity())
-                {
-                    DisplayOverviewWeatherInfo();
-                }
-                else
-                {
-                    MessageBox.Show("Please enter a valid city/country name!");
-                }
-
+                await DisplayWeatherData();
             }
             catch(Exception ex)
             {
@@ -52,6 +40,14 @@ namespace WeatherApp
             }
         }
 
+        private async Task DisplayWeatherData()
+        {
+            string city = textBox.Text;
+            string responseContent = await apiService.RetrieveWeatherInformationAsync(city, apiKey);
+
+            weatherData = apiService.DeserializeObject(responseContent);
+            DisplayOverviewWeatherInfo();
+        }
 
         private void DisplayOverviewWeatherInfo()
         {
@@ -64,24 +60,24 @@ namespace WeatherApp
             DisplayPicIcon();
         }
 
-        private void DisplayLocationInfo() => labCityInfo.Text = $"{weatherInfo.City}, {weatherInfo.Sys.Country}";
+        private void DisplayLocationInfo() => labCityInfo.Text = $"{weatherData.City}, {weatherData.Sys.Country}";
 
-        private void DisplayTemperatureInfo() => labDegrees.Text = $"{weatherInfo.Main.Temp:0.0°} C";
+        private void DisplayTemperatureInfo() => labDegrees.Text = $"{weatherData.Main.Temp:0.0°} C";
 
-        private void DisplayPicIcon() => picIcon.ImageLocation = $"http://openweathermap.org/img/w/{weatherInfo.Weather[0].Icon}.png";
+        private void DisplayPicIcon() => picIcon.ImageLocation = $"http://openweathermap.org/img/w/{weatherData.Weather[0].Icon}.png";
 
         private static DateTimeOffset ConvertUnixTimeStampToLocalTime(long unixTimestamp) => DateTimeOffset.FromUnixTimeSeconds(unixTimestamp);
 
         private void DisplayWeatherConditionInfo()
         {
-            labConditions.Text = weatherInfo.Weather[0].Main;
-            labDetails.Text = weatherInfo.Weather[0].Description;
+            labConditions.Text = weatherData.Weather[0].Main;
+            labDetails.Text = weatherData.Weather[0].Description;
         }
 
         private void DisplaySunriseAndSunsetInfo()
         {
-            DateTimeOffset sunriseTime = ConvertUnixTimeStampToLocalTime(weatherInfo.Sys.Sunrise);
-            DateTimeOffset sunsetTime = ConvertUnixTimeStampToLocalTime(weatherInfo.Sys.Sunset);
+            DateTimeOffset sunriseTime = ConvertUnixTimeStampToLocalTime(weatherData.Sys.Sunrise);
+            DateTimeOffset sunsetTime = ConvertUnixTimeStampToLocalTime(weatherData.Sys.Sunset);
 
             labSunrise.Text = $"{sunriseTime: HH : mm}";
             labSunset.Text = $"{sunsetTime: HH : mm}";
@@ -89,14 +85,14 @@ namespace WeatherApp
 
         private void DisplayWindInfo()
         {
-            double windSpeedInKmPerHour = weatherInfo.Wind.Speed * 3.6;
+            double windSpeedInKmPerHour = weatherData.Wind.Speed * 3.6;
             labWindSpeed.Text = $"{windSpeedInKmPerHour:0.0} km/h";
         }
 
         private void DisplayPressureAndHumidityInfo()
         {
-            labPressure.Text = $"{weatherInfo.Main.Pressure}";
-            labHumidity.Text = $"{weatherInfo.Main.Humidity}%";
+            labPressure.Text = $"{weatherData.Main.Pressure}";
+            labHumidity.Text = $"{weatherData.Main.Humidity}%";
         }
 
 
@@ -107,13 +103,6 @@ namespace WeatherApp
                 e.Handled = true;
                 await DisplayWeather();
             }
-        }
-
-        private bool ValidateCity()
-        {
-            string city = textBox.Text;
-
-            return weatherInfo.Message != "city not found" && !string.IsNullOrEmpty(city);
         }
 
         private void WeatherFormFormClosing(object sender, FormClosingEventArgs e)

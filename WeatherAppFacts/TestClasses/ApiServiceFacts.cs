@@ -1,5 +1,6 @@
 ﻿using Moq;
 using Moq.Protected;
+using Newtonsoft.Json;
 using System.Net;
 using WeatherApp.Classes;
 
@@ -7,6 +8,45 @@ namespace WeatherAppFacts.TestClasses
 {
     public class ApiServiceFacts
     {
+        private  ApiService apiService = new ();
+
+        [Fact]
+        public void DeserializeObject_ResponseContentIsValidJson_ShouldReturnExpectedResult()
+        {
+            string responseContent = "{ \"coord\": {\r\n    \"lon\": 10.99,\r\n    \"lat\": 44.34\r\n  }, }";
+
+            WeatherData weatherInfo = apiService.DeserializeObject(responseContent);
+
+            Assert.Equal(10.99, weatherInfo.Coord.Lon);
+            Assert.Equal(44.34, weatherInfo.Coord.Lat);
+        }
+
+        [Fact]
+        public void DeserializeObject_ResponseContentIsNotValidJson_ShouldReturnExpectedResult()
+        {
+            string responseContent = "{ \"coord\": {\r\n    \"lon\": 10.99,\r\n    \"lat\": 44.34\r\n}";
+
+            Assert.Throws<JsonSerializationException>(() => apiService.DeserializeObject(responseContent));
+        }
+
+
+        [Fact]
+        public void DeserializeObject_ResponseContentIsEmpty_ShouldReturnExpectedResult()
+        {
+            string responseContent = "";
+
+             Assert.Throws<ArgumentException>(() => apiService.DeserializeObject(responseContent));
+        }
+
+
+        [Fact]
+        public void DeserializeObject_ResponseContentIsNull_ShouldReturnExpectedResult()
+        {
+            string? responseContent = null;
+
+            Assert.Throws<ArgumentException>(() => apiService.DeserializeObject(responseContent));
+        }
+
         [Fact]
         public async Task RetrieveWeatherInformationAsync_HttpStatusCodeIsOk_ShouldReturnExpectedResult()
         {
@@ -23,7 +63,7 @@ namespace WeatherAppFacts.TestClasses
                 });
 
             var httpClient = new HttpClient(mockHttpHandler.Object);
-            var apiService = new ApiService(httpClient);
+            apiService = new ApiService(httpClient);
 
             var weatherInfo = await apiService.RetrieveWeatherInformationAsync(city, apiKey);
 
@@ -46,7 +86,7 @@ namespace WeatherAppFacts.TestClasses
                 });
 
             var httpClient = new HttpClient(mockHttpHandler.Object);
-            var apiService = new ApiService(httpClient);
+            apiService = new ApiService(httpClient);
 
             await Assert.ThrowsAsync<InvalidOperationException>(() => apiService.RetrieveWeatherInformationAsync(city, apiKey));
 
@@ -67,7 +107,7 @@ namespace WeatherAppFacts.TestClasses
                 });
 
             var httpClient = new HttpClient(mockHttpHandler.Object);
-            var apiService = new ApiService(httpClient);
+            apiService = new ApiService(httpClient);
 
             await Assert.ThrowsAsync<InvalidOperationException>(() => apiService.RetrieveWeatherInformationAsync(city, apiKey));
         }
@@ -84,7 +124,7 @@ namespace WeatherAppFacts.TestClasses
                 .ThrowsAsync(new HttpRequestException());
 
             var httpClient = new HttpClient(mockHttpHandler.Object);
-            var apiService = new ApiService(httpClient);
+            apiService = new ApiService(httpClient);
 
             await Assert.ThrowsAsync<InvalidOperationException>(() => apiService.RetrieveWeatherInformationAsync(city, apiKey));
         }
@@ -146,7 +186,7 @@ namespace WeatherAppFacts.TestClasses
                 });
 
             var httpClient = new HttpClient(mockHttpHandler.Object);
-            var apiService = new ApiService(httpClient);
+            apiService = new ApiService(httpClient);
 
             await Assert.ThrowsAsync<InvalidOperationException>(() => apiService.RetrieveWeatherInformationAsync(city, apiKey));
         }
