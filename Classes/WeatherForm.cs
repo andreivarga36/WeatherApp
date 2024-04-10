@@ -16,7 +16,7 @@ namespace WeatherApp
             InitializeComponent();
 
             this.apiService = apiService;
-            this.weatherData = weatherData; 
+            this.weatherData = weatherData;
             this.apiKey = apiKey;
 
             textBox.KeyPress += TextBoxKeyPress;
@@ -34,7 +34,7 @@ namespace WeatherApp
             {
                 await DisplayWeatherData();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

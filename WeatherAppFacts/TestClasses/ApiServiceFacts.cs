@@ -8,7 +8,7 @@ namespace WeatherAppFacts.TestClasses
 {
     public class ApiServiceFacts
     {
-        private  ApiService apiService = new ();
+        private ApiService apiService = new();
 
         [Fact]
         public void DeserializeObject_ResponseContentIsValidJson_ShouldReturnExpectedResult()
@@ -35,7 +35,7 @@ namespace WeatherAppFacts.TestClasses
         {
             string responseContent = "";
 
-             Assert.Throws<ArgumentException>(() => apiService.DeserializeObject(responseContent));
+            Assert.Throws<ArgumentException>(() => apiService.DeserializeObject(responseContent));
         }
 
 
