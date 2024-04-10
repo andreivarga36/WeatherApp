@@ -110,7 +110,6 @@
     <Compile Include="Classes\Main.cs" />
     <Compile Include="Classes\Program.cs" />
     <Compile Include="Interfaces\IApiService.cs" />
-    <Compile Include="Interfaces\IDataService.cs" />
     <Compile Include="Interfaces\IWeatherData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\Sys.cs" />
