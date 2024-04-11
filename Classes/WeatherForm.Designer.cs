@@ -32,10 +32,10 @@
             this.City = new System.Windows.Forms.Label();
             this.textBox = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.labCityInfo = new System.Windows.Forms.Label();
-            this.labDegrees = new System.Windows.Forms.Label();
-            this.labConditions = new System.Windows.Forms.Label();
-            this.labDetails = new System.Windows.Forms.Label();
+            this.cityInfo = new System.Windows.Forms.Label();
+            this.degrees = new System.Windows.Forms.Label();
+            this.conditions = new System.Windows.Forms.Label();
+            this.details = new System.Windows.Forms.Label();
             this.sunrise = new System.Windows.Forms.Label();
             this.sunset = new System.Windows.Forms.Label();
             this.labSunrise = new System.Windows.Forms.Label();
@@ -47,6 +47,10 @@
             this.humidity = new System.Windows.Forms.Label();
             this.labHumidity = new System.Windows.Forms.Label();
             this.picIcon = new System.Windows.Forms.PictureBox();
+            this.labCityInfo = new System.Windows.Forms.Label();
+            this.labDegrees = new System.Windows.Forms.Label();
+            this.labConditions = new System.Windows.Forms.Label();
+            this.labDetails = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,53 +88,53 @@
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.SearchButtonClick);
             // 
-            // labCityInfo
+            // cityInfo
             // 
-            this.labCityInfo.AutoSize = true;
-            this.labCityInfo.BackColor = System.Drawing.Color.Transparent;
-            this.labCityInfo.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labCityInfo.ForeColor = System.Drawing.Color.White;
-            this.labCityInfo.Location = new System.Drawing.Point(185, 130);
-            this.labCityInfo.Name = "labCityInfo";
-            this.labCityInfo.Size = new System.Drawing.Size(71, 23);
-            this.labCityInfo.TabIndex = 6;
-            this.labCityInfo.Text = "CityInfo";
+            this.cityInfo.AutoSize = true;
+            this.cityInfo.BackColor = System.Drawing.Color.Transparent;
+            this.cityInfo.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cityInfo.ForeColor = System.Drawing.Color.White;
+            this.cityInfo.Location = new System.Drawing.Point(185, 130);
+            this.cityInfo.Name = "cityInfo";
+            this.cityInfo.Size = new System.Drawing.Size(80, 23);
+            this.cityInfo.TabIndex = 6;
+            this.cityInfo.Text = "City Info:";
             // 
-            // labDegrees
+            // degrees
             // 
-            this.labDegrees.AutoSize = true;
-            this.labDegrees.BackColor = System.Drawing.Color.Transparent;
-            this.labDegrees.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labDegrees.ForeColor = System.Drawing.Color.White;
-            this.labDegrees.Location = new System.Drawing.Point(185, 180);
-            this.labDegrees.Name = "labDegrees";
-            this.labDegrees.Size = new System.Drawing.Size(73, 23);
-            this.labDegrees.TabIndex = 7;
-            this.labDegrees.Text = "Degrees";
+            this.degrees.AutoSize = true;
+            this.degrees.BackColor = System.Drawing.Color.Transparent;
+            this.degrees.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.degrees.ForeColor = System.Drawing.Color.White;
+            this.degrees.Location = new System.Drawing.Point(185, 180);
+            this.degrees.Name = "degrees";
+            this.degrees.Size = new System.Drawing.Size(78, 23);
+            this.degrees.TabIndex = 7;
+            this.degrees.Text = "Degrees:";
             // 
-            // labConditions
+            // conditions
             // 
-            this.labConditions.AutoSize = true;
-            this.labConditions.BackColor = System.Drawing.Color.Transparent;
-            this.labConditions.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labConditions.ForeColor = System.Drawing.Color.White;
-            this.labConditions.Location = new System.Drawing.Point(185, 230);
-            this.labConditions.Name = "labConditions";
-            this.labConditions.Size = new System.Drawing.Size(93, 23);
-            this.labConditions.TabIndex = 8;
-            this.labConditions.Text = "Conditions";
+            this.conditions.AutoSize = true;
+            this.conditions.BackColor = System.Drawing.Color.Transparent;
+            this.conditions.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.conditions.ForeColor = System.Drawing.Color.White;
+            this.conditions.Location = new System.Drawing.Point(185, 230);
+            this.conditions.Name = "conditions";
+            this.conditions.Size = new System.Drawing.Size(98, 23);
+            this.conditions.TabIndex = 8;
+            this.conditions.Text = "Conditions:";
             // 
-            // labDetails
+            // details
             // 
-            this.labDetails.AutoSize = true;
-            this.labDetails.BackColor = System.Drawing.Color.Transparent;
-            this.labDetails.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labDetails.ForeColor = System.Drawing.Color.White;
-            this.labDetails.Location = new System.Drawing.Point(185, 280);
-            this.labDetails.Name = "labDetails";
-            this.labDetails.Size = new System.Drawing.Size(62, 23);
-            this.labDetails.TabIndex = 9;
-            this.labDetails.Text = "Details";
+            this.details.AutoSize = true;
+            this.details.BackColor = System.Drawing.Color.Transparent;
+            this.details.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.details.ForeColor = System.Drawing.Color.White;
+            this.details.Location = new System.Drawing.Point(185, 280);
+            this.details.Name = "details";
+            this.details.Size = new System.Drawing.Size(67, 23);
+            this.details.TabIndex = 9;
+            this.details.Text = "Details:";
             // 
             // sunrise
             // 
@@ -162,11 +166,10 @@
             this.labSunrise.BackColor = System.Drawing.Color.Transparent;
             this.labSunrise.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labSunrise.ForeColor = System.Drawing.Color.White;
-            this.labSunrise.Location = new System.Drawing.Point(272, 330);
+            this.labSunrise.Location = new System.Drawing.Point(287, 330);
             this.labSunrise.Name = "labSunrise";
-            this.labSunrise.Size = new System.Drawing.Size(39, 23);
+            this.labSunrise.Size = new System.Drawing.Size(0, 23);
             this.labSunrise.TabIndex = 12;
-            this.labSunrise.Text = "N/A";
             // 
             // labSunset
             // 
@@ -174,11 +177,10 @@
             this.labSunset.BackColor = System.Drawing.Color.Transparent;
             this.labSunset.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labSunset.ForeColor = System.Drawing.Color.White;
-            this.labSunset.Location = new System.Drawing.Point(272, 380);
+            this.labSunset.Location = new System.Drawing.Point(287, 380);
             this.labSunset.Name = "labSunset";
-            this.labSunset.Size = new System.Drawing.Size(39, 23);
+            this.labSunset.Size = new System.Drawing.Size(0, 23);
             this.labSunset.TabIndex = 13;
-            this.labSunset.Text = "N/A";
             // 
             // windspeed
             // 
@@ -186,7 +188,7 @@
             this.windspeed.BackColor = System.Drawing.Color.Transparent;
             this.windspeed.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.windspeed.ForeColor = System.Drawing.Color.White;
-            this.windspeed.Location = new System.Drawing.Point(472, 130);
+            this.windspeed.Location = new System.Drawing.Point(504, 130);
             this.windspeed.Name = "windspeed";
             this.windspeed.Size = new System.Drawing.Size(106, 23);
             this.windspeed.TabIndex = 14;
@@ -198,7 +200,7 @@
             this.pressure.BackColor = System.Drawing.Color.Transparent;
             this.pressure.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pressure.ForeColor = System.Drawing.Color.White;
-            this.pressure.Location = new System.Drawing.Point(472, 180);
+            this.pressure.Location = new System.Drawing.Point(504, 180);
             this.pressure.Name = "pressure";
             this.pressure.Size = new System.Drawing.Size(83, 23);
             this.pressure.TabIndex = 15;
@@ -210,11 +212,10 @@
             this.labWindSpeed.BackColor = System.Drawing.Color.Transparent;
             this.labWindSpeed.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labWindSpeed.ForeColor = System.Drawing.Color.White;
-            this.labWindSpeed.Location = new System.Drawing.Point(584, 130);
+            this.labWindSpeed.Location = new System.Drawing.Point(628, 130);
             this.labWindSpeed.Name = "labWindSpeed";
-            this.labWindSpeed.Size = new System.Drawing.Size(39, 23);
+            this.labWindSpeed.Size = new System.Drawing.Size(0, 23);
             this.labWindSpeed.TabIndex = 16;
-            this.labWindSpeed.Text = "N/A";
             // 
             // labPressure
             // 
@@ -222,11 +223,10 @@
             this.labPressure.BackColor = System.Drawing.Color.Transparent;
             this.labPressure.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labPressure.ForeColor = System.Drawing.Color.White;
-            this.labPressure.Location = new System.Drawing.Point(584, 180);
+            this.labPressure.Location = new System.Drawing.Point(628, 180);
             this.labPressure.Name = "labPressure";
-            this.labPressure.Size = new System.Drawing.Size(39, 23);
+            this.labPressure.Size = new System.Drawing.Size(0, 23);
             this.labPressure.TabIndex = 17;
-            this.labPressure.Text = "N/A";
             // 
             // humidity
             // 
@@ -234,7 +234,7 @@
             this.humidity.BackColor = System.Drawing.Color.Transparent;
             this.humidity.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.humidity.ForeColor = System.Drawing.Color.White;
-            this.humidity.Location = new System.Drawing.Point(472, 230);
+            this.humidity.Location = new System.Drawing.Point(504, 230);
             this.humidity.Name = "humidity";
             this.humidity.Size = new System.Drawing.Size(85, 23);
             this.humidity.TabIndex = 18;
@@ -246,21 +246,64 @@
             this.labHumidity.BackColor = System.Drawing.Color.Transparent;
             this.labHumidity.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labHumidity.ForeColor = System.Drawing.Color.White;
-            this.labHumidity.Location = new System.Drawing.Point(584, 230);
+            this.labHumidity.Location = new System.Drawing.Point(628, 230);
             this.labHumidity.Name = "labHumidity";
-            this.labHumidity.Size = new System.Drawing.Size(39, 23);
+            this.labHumidity.Size = new System.Drawing.Size(0, 23);
             this.labHumidity.TabIndex = 19;
-            this.labHumidity.Text = "N/A";
             // 
             // picIcon
             // 
             this.picIcon.BackColor = System.Drawing.Color.Transparent;
-            this.picIcon.Location = new System.Drawing.Point(342, 230);
+            this.picIcon.Location = new System.Drawing.Point(398, 180);
             this.picIcon.Name = "picIcon";
             this.picIcon.Size = new System.Drawing.Size(100, 73);
             this.picIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picIcon.TabIndex = 20;
             this.picIcon.TabStop = false;
+            // 
+            // labCityInfo
+            // 
+            this.labCityInfo.AutoSize = true;
+            this.labCityInfo.BackColor = System.Drawing.Color.Transparent;
+            this.labCityInfo.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labCityInfo.ForeColor = System.Drawing.Color.White;
+            this.labCityInfo.Location = new System.Drawing.Point(287, 130);
+            this.labCityInfo.Name = "labCityInfo";
+            this.labCityInfo.Size = new System.Drawing.Size(0, 23);
+            this.labCityInfo.TabIndex = 21;
+            // 
+            // labDegrees
+            // 
+            this.labDegrees.AutoSize = true;
+            this.labDegrees.BackColor = System.Drawing.Color.Transparent;
+            this.labDegrees.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labDegrees.ForeColor = System.Drawing.Color.White;
+            this.labDegrees.Location = new System.Drawing.Point(287, 180);
+            this.labDegrees.Name = "labDegrees";
+            this.labDegrees.Size = new System.Drawing.Size(0, 23);
+            this.labDegrees.TabIndex = 22;
+            // 
+            // labConditions
+            // 
+            this.labConditions.AutoSize = true;
+            this.labConditions.BackColor = System.Drawing.Color.Transparent;
+            this.labConditions.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labConditions.ForeColor = System.Drawing.Color.White;
+            this.labConditions.Location = new System.Drawing.Point(287, 230);
+            this.labConditions.Name = "labConditions";
+            this.labConditions.Size = new System.Drawing.Size(0, 23);
+            this.labConditions.TabIndex = 23;
+            // 
+            // labDetails
+            // 
+            this.labDetails.AutoSize = true;
+            this.labDetails.BackColor = System.Drawing.Color.Transparent;
+            this.labDetails.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labDetails.ForeColor = System.Drawing.Color.White;
+            this.labDetails.Location = new System.Drawing.Point(287, 280);
+            this.labDetails.Name = "labDetails";
+            this.labDetails.Size = new System.Drawing.Size(0, 23);
+            this.labDetails.TabIndex = 24;
             // 
             // WeatherForm
             // 
@@ -269,6 +312,10 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(743, 436);
+            this.Controls.Add(this.labDetails);
+            this.Controls.Add(this.labConditions);
+            this.Controls.Add(this.labDegrees);
+            this.Controls.Add(this.labCityInfo);
             this.Controls.Add(this.picIcon);
             this.Controls.Add(this.labHumidity);
             this.Controls.Add(this.humidity);
@@ -280,10 +327,10 @@
             this.Controls.Add(this.labSunrise);
             this.Controls.Add(this.sunset);
             this.Controls.Add(this.sunrise);
-            this.Controls.Add(this.labDetails);
-            this.Controls.Add(this.labConditions);
-            this.Controls.Add(this.labDegrees);
-            this.Controls.Add(this.labCityInfo);
+            this.Controls.Add(this.details);
+            this.Controls.Add(this.conditions);
+            this.Controls.Add(this.degrees);
+            this.Controls.Add(this.cityInfo);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.textBox);
             this.Controls.Add(this.City);
@@ -303,9 +350,9 @@
         private System.Windows.Forms.Label City;
         private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Label labDegrees;
-        private System.Windows.Forms.Label labConditions;
-        private System.Windows.Forms.Label labDetails;
+        private System.Windows.Forms.Label degrees;
+        private System.Windows.Forms.Label conditions;
+        private System.Windows.Forms.Label details;
         private System.Windows.Forms.Label sunrise;
         private System.Windows.Forms.Label sunset;
         private System.Windows.Forms.Label labSunrise;
@@ -317,7 +364,11 @@
         private System.Windows.Forms.Label humidity;
         private System.Windows.Forms.Label labHumidity;
         private System.Windows.Forms.PictureBox picIcon;
+        private System.Windows.Forms.Label cityInfo;
         private System.Windows.Forms.Label labCityInfo;
+        private System.Windows.Forms.Label labDegrees;
+        private System.Windows.Forms.Label labConditions;
+        private System.Windows.Forms.Label labDetails;
     }
 }
 
