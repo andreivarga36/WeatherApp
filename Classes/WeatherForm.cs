@@ -21,6 +21,20 @@ namespace WeatherApp
 
             textBox.KeyPress += TextBoxKeyPress;
             FormClosing += WeatherFormFormClosing;
+            UpdateLabelsVisibility(false);
+        }
+
+        private void UpdateLabelsVisibility(bool showOrHideLabels)
+        {
+            labCityInfo.Visible = showOrHideLabels;
+            labDegrees.Visible =  showOrHideLabels;
+            labConditions.Visible = showOrHideLabels;
+            labDetails.Visible = showOrHideLabels;
+            labSunrise.Visible = showOrHideLabels;
+            labSunset.Visible = showOrHideLabels;
+            labWindSpeed.Visible = showOrHideLabels;
+            labPressure.Visible = showOrHideLabels;
+            labHumidity.Visible = showOrHideLabels;
         }
 
         private async void SearchButtonClick(object sender, EventArgs e)
@@ -47,6 +61,7 @@ namespace WeatherApp
 
             weatherData = apiService.DeserializeObject(responseContent);
             DisplayOverviewWeatherInfo();
+            UpdateLabelsVisibility(true);
         }
 
         private void DisplayOverviewWeatherInfo()
