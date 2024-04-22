@@ -106,7 +106,7 @@ namespace WeatherApp
 
         private void DisplayPressureAndHumidityInfo()
         {
-            labPressure.Text = $"{weatherData.Main.Pressure}";
+            labPressure.Text = $"{weatherData.Main.Pressure} hPa";
             labHumidity.Text = $"{weatherData.Main.Humidity}%";
         }
 
