@@ -20,7 +20,7 @@ namespace WeatherApp.Classes
             httpClient = client;
         }
 
-        public WeatherData DeserializeObject(string responseContent)
+        public WeatherData DeserializeWeatherData(string responseContent)
         {
             if (string.IsNullOrEmpty(responseContent))
             {
@@ -30,12 +30,12 @@ namespace WeatherApp.Classes
             return JsonConvert.DeserializeObject<WeatherData>(responseContent);
         }
 
-        public void DisposeClient()
+        public void DisposeHttpClient()
         {
             httpClient.Dispose();
         }
 
-        public async Task<string> RetrieveWeatherInformationAsync(string city, string apiKey)
+        public async Task<string> GetWeatherDataAsync(string city, string apiKey)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace WeatherApp.Classes
             }
             catch (Exception ex)
             {
-                throw new InvalidOperationException(ex.Message);
+                throw new InvalidOperationException(ex.Message, ex);
             }
         }
 

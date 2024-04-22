@@ -86,7 +86,7 @@
             this.btnSearch.TabIndex = 5;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
-            this.btnSearch.Click += new System.EventHandler(this.SearchButtonClick);
+            this.btnSearch.Click += new System.EventHandler(this.HandleSearchButtonClick);
             // 
             // cityInfo
             // 

@@ -5,10 +5,10 @@ namespace WeatherApp.Interfaces
 {
     public interface IApiService
     {
-        Task<string> RetrieveWeatherInformationAsync(string city, string apiKey);
+        Task<string> GetWeatherDataAsync(string city, string apiKey);
 
-        WeatherData DeserializeObject(string responseContent);
+        WeatherData DeserializeWeatherData(string responseContent);
 
-        void DisposeClient();
+        void DisposeHttpClient();
     }
 }
