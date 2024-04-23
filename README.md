@@ -26,7 +26,9 @@
 
     - Windows Forms: The GUI library used for building the user interface
 
-    - System.Threading.Tasks: The namespace used for working with asynchronous tasks   
+    - System.Threading.Tasks: The namespace used for working with asynchronous tasks
+
+    - XUnit: A testing framework for .NET used to create unit tests.
     
     - Code Analyzers: Microsoft.CodeAnalysis.NetAnalyzers, Roslynator.Analyzers, SonarAnalyzer.CSharp
 
