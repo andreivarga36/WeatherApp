@@ -26,16 +26,18 @@
 
     - Windows Forms: The GUI library used for building the user interface
 
-    - System.Threading.Tasks: The namespace used for working with asynchronous tasks   
+    - System.Threading.Tasks: The namespace used for working with asynchronous tasks
+
+    - XUnit: A testing framework for .NET used to create unit tests.
     
     - Code Analyzers: Microsoft.CodeAnalysis.NetAnalyzers, Roslynator.Analyzers, SonarAnalyzer.CSharp
 
 #### Screenshots
 
-  - ![City found - Madrid](ScreenShots/madrid.jpg)
-  - ![City found - Bucharest](ScreenShots/london.jpg)
-  - ![Empty field](ScreenShots/empty.jpg)
-  - ![City not found](ScreenShots/notFound.jpg)
+  - [City found - Madrid](ScreenShots/madrid.jpg)
+  - [City found - London](ScreenShots/london.jpg)
+  - [Empty field](ScreenShots/empty.jpg)
+  - [City not found](ScreenShots/notFound.jpg)
 
 #### Documentation
   - https://openweathermap.org/
