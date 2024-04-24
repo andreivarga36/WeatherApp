@@ -14,7 +14,7 @@
 
 ### Technologies and Tools Used
 
-  - C#: The programming language used for developing the application
+   - C#: The programming language used for developing the application
 
   - .NET Framework: The development platform for creating desktop applications
 
