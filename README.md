@@ -12,7 +12,7 @@
     
   - View Weather Information: Temperature, weather conditions, wind, humidity, etc; will be displayed in the graphical interface
 
-### Technologies and Tools Used:
+### Technologies and Tools Used
 
   - C#: The programming language used for developing the application
 
