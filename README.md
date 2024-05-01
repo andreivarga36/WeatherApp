@@ -40,7 +40,9 @@
   - [City not found](ScreenShots/notFound.jpg)
 
 #### Documentation
-  - https://openweathermap.org/
-  - https://learn.microsoft.com/en-us/dotnet/csharp/asynchronous-programming/
+
+  - [OpenWeather](https://openweathermap.org/guide)
+    
+  - [Asynchronous Programming](https://learn.microsoft.com/en-us/dotnet/csharp/asynchronous-programming/)
 
   
