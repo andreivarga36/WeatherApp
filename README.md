@@ -40,7 +40,7 @@
     
   - [Empty field](ScreenShots/empty.jpg)
     
-  - [City not found](ScreenShots/notFound.jpg)
+  - [Invalid city name](ScreenShots/notFound.jpg)
 
 #### Documentation
 
