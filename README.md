@@ -38,7 +38,7 @@
     
   - ![City found - London](ScreenShots/london.jpg)
 
-    For more screenshots, visit [Screenshots](Screenshots)
+    For more screenshots, visit [Screenshots](Screenshots/)
 
 #### Documentation
 
