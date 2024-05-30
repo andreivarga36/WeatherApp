@@ -38,7 +38,7 @@
     
   - ![City found - London](ScreenShots/london.jpg)
 
-    For more screenshots, visit [Screenshots](./Screenshots/)
+    For more screenshots, visit [Screenshots](https://github.com/andreivarga36/WeatherApp/tree/master/ScreenShots)
 
 #### Documentation
 
