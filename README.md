@@ -34,13 +34,11 @@
 
 #### Screenshots
 
-  - [City found - Madrid](ScreenShots/madrid.jpg)
+  - ![City found - Madrid](ScreenShots/madrid.jpg)
     
-  - [City found - London](ScreenShots/london.jpg)
-    
-  - [Empty field](ScreenShots/empty.jpg)
-    
-  - [Invalid city name](ScreenShots/notFound.jpg)
+  - ![City found - London](ScreenShots/london.jpg)
+
+    For more screenshots, visit [Screenshots](Screenshots)
 
 #### Documentation
 
